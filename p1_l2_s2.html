@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+body {  padding: 0 20%; } 
+</style>
+</head>
+
+<body>
+
+<h1>Style Transfer</h1>
+
+<p>As an example of the kind of things you'll be building with deep learning models, here is a really fun project, <a href="https://github.com/lengstrom/fast-style-transfer">fast style transfer</a>. Style transfer allows you to take famous paintings, and recreate your own images in their styles! The network learns the underlying techniques of those paintings and figures out how to apply them on its own. This model was trained on the styles of famous paintings and is able to transfer those styles to other images and <a href="https://www.youtube.com/watch?v=xVJwwWQlQ1o">even videos</a>!</p>
+
+<p>I used it to style my cat Chihiro in the style of <a href="https://en.wikipedia.org/wiki/Hokusai">Hokusai</a>'s <a href="https://en.wikipedia.org/wiki/The_Great_Wave_off_Kanagawa"><em>The Great Wave Off Kanagawa</em></a>.</p>
+
+<img src="images/chi-waves.png">
+
+<p>To try it out yourself, you can find the code in the <a href="https://github.com/lengstrom/fast-style-transfer">fast-style-transfer GitHub repo</a>. Either use git to clone the repository, or you can download the whole thing as a Zip archive and extract it.</p>
+
+<p>The network has been trained on a few different styles (<a href="https://github.com/lengstrom/fast-style-transfer/tree/master/examples/style">here</a>) and saved into <a href="https://drive.google.com/drive/folders/0B9jhaT37ydSyRk9UX0wwX3BpMzQ">checkpoint files</a>. Checkpoint files contain all the information about the trained network to apply styles to new images.</p>
+
+<h2>Dependencies</h2>
+
+<p>The easiest way to install all the packages needed to run this code is with <a href="http://conda.pydata.org/miniconda.html">Miniconda</a>, a smaller version of <a href="https://www.continuum.io/downloads">Anaconda</a>. Miniconda comes with Conda, a package and environment manager built specifically for data science. Install the Python 3 version of Miniconda appropriate for your operating system.</p>
+
+<p>If you haven't used Conda before, please quickly run through the Anaconda lesson (Lesson 3 on this part).</p>
+
+<h3>Windows</h3>
+
+<p>For Windows, you'll need to install TensorFlow 0.12.1, Python 3.5, Pillow 3.4.2, scipy 0.18.1, and numpy 1.11.2. After installing Miniconda, open your command prompt. In there, enter these commands line by line:</p>
+
+<pre>
+conda create -n style-transfer python=3
+activate style-transfer
+conda install tensorflow scipy pillow
+pip install moviepy
+python -c "import imageio; imageio.plugins.ffmpeg.download()"
+</pre>
+
+<h3>OS X and Linux</h3>
+
+<p>For OS X and Linux, you'll need to install TensorFlow 0.11.0, Python 2.7.9, Pillow 3.4.2, scipy 0.18.1, and numpy 1.11.2.</p>
+
+<p>In your terminal, enter this commands line by line:</p>
+
+<pre>
+conda create -n style-transfer python=3
+activate style-transfer
+conda install tensorflow scipy pillow
+pip install moviepy
+python -c "import imageio; imageio.plugins.ffmpeg.download()"
+</pre>
+
+<p>Let’s take a quick look at what these commands do. The first line in both sets of instructions, creates a new environment with Python 3. This environment will hold all the packages you need for the style transfer code. The next line enters the environment. Next, we install TensorFlow, SciPy, Pillow (which is an image processing library), and moviepy. The last line here installs ffmpeg, an application for converting images and videos.</p>
+
+<h3>Transferring styles</h3>
+
+<ol>
+	<li>Download the Zip archive from the <a href="https://github.com/lengstrom/fast-style-transfer">fast-style-transfer</a> repository and extract it. You can download it by clicking on the bright green button on the right.</li>
+	<li>Download the Rain Princess checkpoint from <a href="https://d17h27t6h515a5.cloudfront.net/topher/2017/January/587d1865_rain-princess/rain-princess.ckpt">here</a>. Put it in the fast-style-transfer folder. A checkpoint file is a model that already has tuned parameters. By using this checkpoint file, we won't need to train the model and can get straight to applying it.</li>
+	<li>Copy the image you want to style into the fast-style-transfer folder.</li>
+	<li>Enter the Conda environment you created above, if you aren't still in it.</li>
+</ol>
+
+<p>Finally, in your terminal, navigate to the fast-style-transfer folder and enter</p>
+
+<pre>
+python evaluate.py --checkpoint ./rain-princess.ckpt --in-path <path_to_input_file> --out-path ./output_image.jpg
+</pre>
+
+<p><strong>Note:</strong> Your checkpoint file might be named rain_princess.ckpt, notice the underscore, it's not the dash from above.</p>
+
+<p>You can get more checkpoint files at the bottom of this page. Try them all!</p>
+
+<p>Share what you create in the <a href="https://discussions.udacity.com/">forums</a> or on the <a href="https://nd101.slack.com/">Slack</a> channel #neural-networks. We'd love to see what you come up with. Also, feel free to train the network on your own images, you can find instructions in the repository (although it does take some powerful hardware).</p>
+
+<p><strong>Note:</strong> Be careful with the size of the input image. The style transfer can take quite a while to run on larger images.</p>
+
+<p>The checkpoints were trained on the following paintings:</p>
+
+<ul>
+	<li>Rain Princesss, by <a href="https://afremov.com/Leonid-Afremov-bio.html">Leonid Afremov</a></li>
+	<li>La Muse, by Pablo Picasso</li>
+	<li>Udnie by Francis Picabia</li>
+	<li>Scream, by Edvard Munch</li>
+	<li>The Great Wave off Kanagawa, by Hokusai</li>
+	<li>The Shipwreck of the Minotaur, by J.M.W. Turner</li>
+</ul>
+
+<p>Supporting Materials
+<ul>
+	<li><a href="http://video.udacity-data.com.s3.amazonaws.com/topher/2017/January/587d1865_rain-princess/rain-princess.ckpt">Rain Princess checkpoint</a></li>
+	<li><a href="http://video.udacity-data.com.s3.amazonaws.com/topher/2017/January/588aa800_la-muse/la-muse.ckpt">La Muse checkpoint</a></li>
+	<li><a href="http://video.udacity-data.com.s3.amazonaws.com/topher/2017/January/588aa846_udnie/udnie.ckpt">Udnie checkpoint</a></li>
+	<li><a href="http://video.udacity-data.com.s3.amazonaws.com/topher/2017/January/588aa883_scream/scream.ckpt">Scream checkpoint</a></li>
+	<li><a href="http://video.udacity-data.com.s3.amazonaws.com/topher/2017/January/588aa89d_wave/wave.ckpt">Wave checkpoint</a></li>
+	<li><a href="http://video.udacity-data.com.s3.amazonaws.com/topher/2017/January/588aa8b6_wreck/wreck.ckpt">Wreck checkpoint</a></li>
+</ul>
+</p>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<h1>Flappy Bird</h1>
+
+<p>In this example, you'll get to see a deep learning agent playing Flappy Bird! You have the option to train the agent yourself, but for now let's just start with the pre-trained network given by the author. Note that the following agent is able to play without being told any information about the structure of the game or its rules. It automatically discovers the rules of the game by finding out how it did on each iteration.</p>
+
+<p>We will be following <a href="https://github.com/yenchenlin/DeepLearningFlappyBird" target="_blank">this repository</a> by Yenchen Lin.</p>
+
+<img src="images/flappy-bird.jpg">
+
+<h2>Instructions</h2>
+
+<ol>
+	<li>Install miniconda or anaconda if you have not already. You can follow <a href="https://classroom.udacity.com/nanodegrees/nd101/parts/2a9dba0b-28eb-4b0e-acfa-bdcf35680d90/modules/329a736b-1700-43d4-9bf0-753cc461bebc/lessons/9e9ed61d-20c3-4431-95aa-a1099f28d601/concepts/4cdc5a26-1e54-4a69-8eb4-f15e37aaab7b" target="_blank">our tutorial</a> for help.</li>
+	<li>Create an environment for flappybird
+		<ul>
+			<li>Mac/Linux: conda create --name=flappybird python=2.7</li>
+			<li>Windows: conda create --name=flappybird python=3.5</li>
+		</ul>
+	</li>
+	<li>Enter your conda environment
+		<ul>
+			<li>Mac/Linux: source activate flappybird</li>
+			<li>Windows: activate flappybird</li>
+		</ul>
+	</li>
+	<li>conda install -c menpo opencv3</li>
+	<li>pip install pygame</li>
+	<li>pip install tensorflow</li>
+	<li>git clone https://github.com/yenchenlin/DeepLearningFlappyBird.git</li>
+	<li>cd DeepLearningFlappyBird</li>
+	<li>python deep_q_network.py</li>
+</ol>
+
+<p>If all went correctly, you should be seeing a deep learning based agent play Flappy Bird! The repository contains instructions for training your own agent if you're interested!</p>
+
+</body>
+
+</html>
